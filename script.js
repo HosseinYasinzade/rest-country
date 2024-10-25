@@ -6,7 +6,6 @@ const flexing = (element) => {
   element.style.justifyContent = "space-between";
   element.style.alignItems = "center";
 };
-
 // create element
 const header = document.createElement("header");
 const nav = document.createElement("nav");
@@ -128,16 +127,23 @@ const data = async function () {
 };
 data().then((countries) => {
   countries.forEach((country) => {
-    console.log(country);
-
     // create cart
     const cart = document.createElement("div");
     const cartTop = document.createElement("div");
     const cartImg = document.createElement("img");
+    const cartBottom = document.createElement("div");
+    const cartTitle = document.createElement("h2");
+    const population = document.createElement("p");
+    const region = document.createElement("p");
+    const capital = document.createElement("p");
 
     cart.classList.add("cart");
-    cartTop.id = "cartTop";
     cartImg.src = `https://flagcdn.com/${country.alpha2Code.toLowerCase()}.svg`;
+    cartBottom.id = "cartBottom";
+    cartTitle.textContent = country.name;
+    population.textContent = `Population: ${country.population}`;
+    region.textContent = `Region: ${country.region}`;
+    capital.textContent = `Capital: ${country.capital}`;
 
     // style
     cartTop.style.height = "50%";
@@ -145,8 +151,27 @@ data().then((countries) => {
     cartImg.style.height = "100%";
     cartImg.style.objectFit = "cover";
 
+    cartBottom.style.height = "50%";
+
+    cartTitle.style.fontSize = "2.5rem";
+    cartTitle.style.margin = "2rem 3rem";
+
+    population.style.fontSize = "1.8rem";
+    population.style.margin = "1rem 3rem";
+
+    region.style.fontSize = "1.8rem";
+    region.style.margin = "1rem 3rem";
+
+    capital.style.fontSize = "1.8rem";
+    capital.style.margin = "1rem 3rem";
+
     container.append(cart);
     cart.append(cartTop);
     cartTop.appendChild(cartImg);
+    cart.append(cartBottom);
+    cartBottom.appendChild(cartTitle);
+    cartBottom.appendChild(population);
+    cartBottom.appendChild(region);
+    cartBottom.appendChild(capital);
   });
 });
