@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+}
+@font-face {
+  font-family: Nuno;
+  src: url("./assets/fonts/NunitoSans_10pt-Regular.ttf") format("trueType");
+}
+html {
+  font-family: Nuno;
+  font-size: 10px;
+}
+
+@media screen and (max-width: 650rem) {
+  #title {
+    font-size: 2rem !important;
+  }
+  .headerBtnDesc {
+    font-size: 1.6rem !important;
+  }
+}
+@media screen and (max-width: 450rem) {
+  #title {
+    font-size: 1.5rem;
+  }
+  .siteMode {
+    width: 12rem !important;
+  }
+  .headerBtnDesc {
+    font-size: 1.4rem !important;
+  }
+}
