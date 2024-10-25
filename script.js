@@ -107,3 +107,46 @@ filter.appendChild(filterOption2);
 filter.appendChild(filterOption3);
 filter.appendChild(filterOption4);
 filter.appendChild(filterOption5);
+
+// counties container
+const container = document.createElement("div");
+container.classList.add("container");
+container.style.padding = "0 5rem";
+container.style.display = "flex";
+container.style.flexWrap = "wrap";
+editContainer.insertAdjacentElement("afterend", container);
+
+// fetch
+const data = async function () {
+  try {
+    const info = await fetch("./data.json");
+    const countries = await info.json();
+    return countries;
+  } catch (error) {
+    alert(error.message);
+  }
+};
+data().then((countries) => {
+  countries.forEach((country) => {
+    console.log(country);
+
+    // create cart
+    const cart = document.createElement("div");
+    const cartTop = document.createElement("div");
+    const cartImg = document.createElement("img");
+
+    cart.classList.add("cart");
+    cartTop.id = "cartTop";
+    cartImg.src = `https://flagcdn.com/${country.alpha2Code.toLowerCase()}.svg`;
+
+    // style
+    cartTop.style.height = "50%";
+    cartImg.style.width = "100%";
+    cartImg.style.height = "100%";
+    cartImg.style.objectFit = "cover";
+
+    container.append(cart);
+    cart.append(cartTop);
+    cartTop.appendChild(cartImg);
+  });
+});

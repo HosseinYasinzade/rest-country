@@ -14,15 +14,47 @@ html {
   font-size: 10px;
 }
 
-@media screen and (max-width: 650rem) {
-  #title {
-    font-size: 2rem !important;
-  }
-  .headerBtnDesc {
-    font-size: 1.6rem !important;
+.cart {
+  width: 21%;
+  height: 50rem;
+  margin: 5rem 2.7rem;
+  border: 1px solid black;
+  background-color: #eeeeee;
+}
+
+@media screen and (max-width: 1466px) {
+  .cart {
+    width: 30%;
+    margin: 5rem 2rem;
   }
 }
-@media screen and (max-width: 450rem) {
+@media screen and (max-width: 1320px) {
+  .cart {
+    width: 40%;
+    margin: 5rem 3.8rem;
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .cart {
+    width: 75%;
+    margin: 5rem 10rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .cart {
+    width: 90%;
+    margin: 5rem 2rem;
+  }
+  #title {
+    font-size: 2rem;
+  }
+  .headerBtnDesc {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 450px) {
   #title {
     font-size: 1.5rem;
   }
