@@ -1,5 +1,4 @@
 "use strict";
-
 const body = document.querySelector("body");
 
 const flexing = (element) => {
@@ -16,15 +15,40 @@ const title = document.createElement("h1");
 // nav right side create
 const mod = document.createElement("button");
 const modIcon = document.createElement("img");
-const modDescriptiom = document.createElement("p");
+const modDescription = document.createElement("p");
+// search and filter section
+const editContainer = document.createElement("div");
+const search = document.createElement("input");
+// filter
+const filter = document.createElement("select");
+const filterOption1 = document.createElement("option");
+const filterOption2 = document.createElement("option");
+const filterOption3 = document.createElement("option");
+const filterOption4 = document.createElement("option");
+const filterOption5 = document.createElement("option");
 
-// add class or id
+// add class or id or attribute
 header.classList.add("header");
 nav.id = "nav";
 title.id = "title";
 mod.classList.add("siteMode");
 modIcon.id + "headerIcon";
-modDescriptiom.classList.add("headerBtnDesc");
+modDescription.classList.add("headerBtnDesc");
+editContainer.classList.add("editContainer");
+search.id = "search";
+search.setAttribute("placeholder", "Search for a country...");
+filter.classList.add("filter");
+
+filterOption1.textContent = "Africa";
+filterOption1.value = "Africa";
+filterOption2.textContent = "America";
+filterOption2.value = "America";
+filterOption3.textContent = "Asia";
+filterOption3.value = "Asia";
+filterOption4.textContent = "Europe";
+filterOption4.value = "Europe";
+filterOption5.textContent = "Oceania";
+filterOption5.value = "Oceania";
 
 // styles
 header.style.height = "10rem";
@@ -32,6 +56,7 @@ header.style.height = "10rem";
 nav.style.height = "100%";
 flexing(nav);
 nav.style.padding = "0 5rem";
+nav.style.borderBottom = "1px solid black";
 
 title.textContent = "Where in the world?";
 title.style.fontSize = "3rem";
@@ -43,14 +68,42 @@ mod.style.padding = "0 1rem";
 mod.style.border = "none";
 mod.style.backgroundColor = "inherit";
 
-modDescriptiom.textContent = "Dark Mode";
-modDescriptiom.style.fontSize = "1.8rem";
+modDescription.textContent = "Dark Mode";
+modDescription.style.fontSize = "1.8rem";
 
 modIcon.src = "./assets/icons/moon.svg";
 modIcon.style.width = "3rem";
+
+editContainer.style.height = "10rem";
+flexing(editContainer);
+editContainer.style.padding = "0 5rem";
+
+search.style.border = "none";
+search.style.outline = "none";
+search.style.borderRadius = "0.5rem";
+search.style.padding = " 1rem 1.5rem";
+search.style.boxShadow = " 2px 2px 11px 2px rgba(184,184,184,1)";
+search.style.fontSize = "1.6rem";
+
+filter.style.border = "none";
+filter.style.outline = "none";
+filter.style.width = "15rem";
+filter.style.borderRadius = "0.5rem";
+filter.style.padding = " 1rem 1.5rem";
+filter.style.boxShadow = " 2px 2px 11px 2px rgba(184,184,184,1)";
+filter.style.fontSize = "1.6rem";
 
 // adding to page
 body.prepend(header);
 header.appendChild(nav);
 nav.append(title, mod);
-mod.append(modIcon, modDescriptiom);
+mod.append(modIcon, modDescription);
+body.appendChild(editContainer);
+header.insertAdjacentElement("afterend", editContainer);
+editContainer.appendChild(search);
+editContainer.appendChild(filter);
+filter.appendChild(filterOption1);
+filter.appendChild(filterOption2);
+filter.appendChild(filterOption3);
+filter.appendChild(filterOption4);
+filter.appendChild(filterOption5);
