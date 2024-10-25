@@ -27,16 +27,7 @@ const filterOption4 = document.createElement("option");
 const filterOption5 = document.createElement("option");
 
 // add class or id or attribute
-header.classList.add("header");
-nav.id = "nav";
-title.id = "title";
-mod.classList.add("siteMode");
-modIcon.id + "headerIcon";
-modDescription.classList.add("headerBtnDesc");
-editContainer.classList.add("editContainer");
-search.id = "search";
 search.setAttribute("placeholder", "Search for a country...");
-filter.classList.add("filter");
 
 filterOption1.textContent = "Africa";
 filterOption1.value = "Africa";
