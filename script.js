@@ -31,8 +31,8 @@ search.setAttribute("placeholder", "Search for a country...");
 
 filterOption1.textContent = "Africa";
 filterOption1.value = "Africa";
-filterOption2.textContent = "America";
-filterOption2.value = "America";
+filterOption2.textContent = "Americas";
+filterOption2.value = "Americas";
 filterOption3.textContent = "Asia";
 filterOption3.value = "Asia";
 filterOption4.textContent = "Europe";
