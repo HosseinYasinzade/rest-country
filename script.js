@@ -131,6 +131,7 @@ data().then((countries) => {
     const capital = document.createElement("p");
 
     cart.classList.add("cart");
+    cart.setAttribute("data-name", country.name);
     cartImg.src = `https://flagcdn.com/${country.alpha2Code.toLowerCase()}.svg`;
     cartBottom.id = "cartBottom";
     cartTitle.textContent = country.name;
@@ -211,4 +212,15 @@ mod.addEventListener("click", function () {
 
     modeFlag = true;
   }
+});
+
+// search
+search.addEventListener("keyup", function (e) {
+  const allCards = document.querySelectorAll(".cart");
+  allCards.forEach((cart) => {
+    cart.style.display = "none";
+    if (cart.dataset.name.toLowerCase().includes(e.target.value)) {
+      cart.style.display = "block";
+    }
+  });
 });
