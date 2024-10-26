@@ -25,6 +25,7 @@ const filterOption2 = document.createElement("option");
 const filterOption3 = document.createElement("option");
 const filterOption4 = document.createElement("option");
 const filterOption5 = document.createElement("option");
+const filterOption6 = document.createElement("option");
 
 // add class or id or attribute
 search.setAttribute("placeholder", "Search for a country...");
@@ -39,6 +40,8 @@ filterOption4.textContent = "Europe";
 filterOption4.value = "Europe";
 filterOption5.textContent = "Oceania";
 filterOption5.value = "Oceania";
+filterOption6.textContent = "all";
+filterOption6.value = "all";
 
 // styles
 header.style.height = "10rem";
@@ -85,6 +88,7 @@ filter.style.padding = " 1rem 1.5rem";
 filter.style.boxShadow = " 2px 2px 11px 2px rgba(184,184,184,1)";
 filter.style.fontSize = "1.6rem";
 
+filterOption6.setAttribute("selected", "selected");
 // adding to page
 body.prepend(header);
 header.appendChild(nav);
@@ -99,6 +103,7 @@ filter.appendChild(filterOption2);
 filter.appendChild(filterOption3);
 filter.appendChild(filterOption4);
 filter.appendChild(filterOption5);
+filter.appendChild(filterOption6);
 
 // counties container
 const container = document.createElement("div");
@@ -231,7 +236,7 @@ filter.addEventListener("change", function (e) {
   const CartsItem = document.querySelectorAll(".cart");
   CartsItem.forEach((item) => {
     item.style.display = "none";
-    if (item.dataset.region === e.target.value) {
+    if (item.dataset.region === e.target.value || e.target.value === "all") {
       item.style.display = "block";
     }
   });
