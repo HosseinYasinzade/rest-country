@@ -222,6 +222,16 @@ const openModal = (country) => {
   modalContent.style.padding = "2rem";
   modalContent.style.backgroundColor = "#fff";
 
+  if (!modeFlag) {
+    modal.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+    modalContent.style.backgroundColor = "hsl(209, 23%, 22%)";
+    modalContent.style.color = "#fff";
+  } else {
+    modal.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+    modalContent.style.backgroundColor = "#fff";
+    modalContent.style.color = "#000";
+  }
+
   closeButton.textContent = "Back";
   closeButton.style.position = "absolute";
   closeButton.style.top = "0.5rem";
