@@ -179,50 +179,6 @@ data().then((countries) => {
   });
 });
 
-// Dark mode
-let modeFlag = true;
-mod.addEventListener("click", function () {
-  const carts = document.querySelectorAll(".cart");
-
-  if (modeFlag) {
-    body.style.backgroundColor = "hsl(207, 26%, 17%)";
-    nav.style.backgroundColor = "hsl(209, 23%, 22%)";
-    nav.style.color = "#fff";
-    mod.style.color = "#fff";
-    modIcon.src = "./assets/icons/sun.svg";
-    modDescription.textContent = "Light Mode";
-    search.style.backgroundColor = "hsl(209, 23%, 22%)";
-    search.style.color = "#fff";
-    filter.style.backgroundColor = "hsl(209, 23%, 22%)";
-    filter.style.color = "#fff";
-    carts.forEach((cart) => {
-      cart.style.backgroundColor = "hsl(209, 23%, 22%)";
-      cart.style.color = "#fff";
-    });
-    modeFlag = false;
-  } else {
-    body.style.backgroundColor = "#fff";
-    nav.style.backgroundColor = "#eeeeee";
-    nav.style.color = "black";
-    mod.style.color = "black";
-    modIcon.src = "./assets/icons/moon.svg";
-    modDescription.textContent = "Dark Mode";
-    search.style.backgroundColor = "#fff";
-    search.style.color = "black";
-    modDescription.textContent = "Light Mode";
-    search.style.backgroundColor = "#fff";
-    search.style.color = "black";
-    filter.style.backgroundColor = "#fff";
-    filter.style.color = "black";
-    carts.forEach((cart) => {
-      cart.style.backgroundColor = "#fff";
-      cart.style.color = "black";
-    });
-
-    modeFlag = true;
-  }
-});
-
 // search
 search.addEventListener("keyup", function (e) {
   const allCards = document.querySelectorAll(".cart");
@@ -337,3 +293,47 @@ const openModal = (country) => {
     }
   });
 };
+
+// Dark mode
+let modeFlag = true;
+mod.addEventListener("click", function () {
+  const carts = document.querySelectorAll(".cart");
+
+  if (modeFlag) {
+    body.style.backgroundColor = "hsl(207, 26%, 17%)";
+    nav.style.backgroundColor = "hsl(209, 23%, 22%)";
+    nav.style.color = "#fff";
+    mod.style.color = "#fff";
+    modIcon.src = "./assets/icons/sun.svg";
+    modDescription.textContent = "Light Mode";
+    search.style.backgroundColor = "hsl(209, 23%, 22%)";
+    search.style.color = "#fff";
+    filter.style.backgroundColor = "hsl(209, 23%, 22%)";
+    filter.style.color = "#fff";
+    carts.forEach((cart) => {
+      cart.style.backgroundColor = "hsl(209, 23%, 22%)";
+      cart.style.color = "#fff";
+    });
+    modeFlag = false;
+  } else {
+    body.style.backgroundColor = "#fff";
+    nav.style.backgroundColor = "#eeeeee";
+    nav.style.color = "black";
+    mod.style.color = "black";
+    modIcon.src = "./assets/icons/moon.svg";
+    modDescription.textContent = "Dark Mode";
+    search.style.backgroundColor = "#fff";
+    search.style.color = "black";
+    modDescription.textContent = "Light Mode";
+    search.style.backgroundColor = "#fff";
+    search.style.color = "black";
+    filter.style.backgroundColor = "#fff";
+    filter.style.color = "black";
+    carts.forEach((cart) => {
+      cart.style.backgroundColor = "#fff";
+      cart.style.color = "black";
+    });
+
+    modeFlag = true;
+  }
+});
