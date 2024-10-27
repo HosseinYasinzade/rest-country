@@ -138,9 +138,11 @@ data().then((countries) => {
     cart.classList.add("cart");
     cart.setAttribute("data-name", country.name);
     cart.setAttribute("data-region", country.region);
+    cart.setAttribute("data-neighbors", country.borders);
     cartImg.src = `https://flagcdn.com/${country.alpha2Code.toLowerCase()}.svg`;
     cartBottom.id = "cartBottom";
     cartTitle.textContent = country.name;
+    population.classList.add("population");
     population.textContent = `Population: ${country.population}`;
     region.textContent = `Region: ${country.region}`;
     capital.textContent = `Capital: ${country.capital}`;
@@ -173,6 +175,7 @@ data().then((countries) => {
     cartBottom.appendChild(population);
     cartBottom.appendChild(region);
     cartBottom.appendChild(capital);
+    cart.addEventListener("click", () => openModal(cart));
   });
 });
 
@@ -241,3 +244,96 @@ filter.addEventListener("change", function (e) {
     }
   });
 });
+
+// modal
+const openModal = (country) => {
+  const modal = document.createElement("div");
+  const modalContent = document.createElement("div");
+  const closeButton = document.createElement("button");
+
+  modal.style.position = "fixed";
+  modal.style.top = "0";
+  modal.style.left = "0";
+  modal.style.width = "100%";
+  modal.style.height = "100%";
+  modal.style.display = "flex";
+  modal.style.justifyContent = "center";
+  modal.style.alignItems = "center";
+  modal.style.fontSize = "1.5rem";
+
+  modalContent.style.position = "relative";
+  modalContent.style.display = "flex";
+  modalContent.style.padding = "2rem";
+  modalContent.style.backgroundColor = "#fff";
+
+  closeButton.textContent = "Back";
+  closeButton.style.position = "absolute";
+  closeButton.style.top = "0.5rem";
+  closeButton.style.left = "1rem";
+  closeButton.style.width = "10rem";
+  closeButton.style.height = "2rem";
+  closeButton.style.cursor = "pointer";
+
+  closeButton.addEventListener("click", () => {
+    modal.style.display = "none";
+    document.body.removeChild(modal);
+  });
+
+  modalContent.appendChild(closeButton);
+  modal.appendChild(modalContent);
+  document.body.appendChild(modal);
+
+  const countryName = country.querySelector("h2").textContent;
+  const population = country.querySelector("p:nth-child(2)").textContent;
+  const region = country.querySelector("p:nth-child(3)").textContent;
+  const capital = country.querySelector("p:nth-child(4)").textContent;
+  const flagSrc = country.querySelector("img").src;
+
+  const neighborsData = country.getAttribute("data-neighbors") || "";
+  const neighbors = neighborsData ? neighborsData.split(",") : [];
+
+  const flagImage = document.createElement("img");
+  const textContainer = document.createElement("div");
+  const title = document.createElement("h2");
+  const populationText = document.createElement("p");
+  const regionText = document.createElement("p");
+  const capitalText = document.createElement("p");
+  const neighborsTitle = document.createElement("p");
+
+  flagImage.src = flagSrc;
+  flagImage.style.maxWidth = "50%";
+  flagImage.style.marginBottom = "1rem";
+  textContainer.style.display = "flex";
+  textContainer.style.width = "60%";
+  textContainer.style.flexDirection = "column";
+  textContainer.style.marginLeft = "2rem";
+  title.textContent = countryName;
+  populationText.textContent = `Population: ${population}`;
+  regionText.textContent = `Region: ${region}`;
+  capitalText.textContent = `Capital: ${capital}`;
+
+  modalContent.appendChild(flagImage);
+  modalContent.appendChild(textContainer);
+  textContainer.appendChild(title);
+  textContainer.appendChild(populationText);
+  textContainer.appendChild(regionText);
+  textContainer.appendChild(capitalText);
+
+  if (neighbors.length > 0) {
+    neighborsTitle.textContent = "Border Countries:";
+    textContainer.appendChild(neighborsTitle);
+
+    neighbors.forEach((neighbor) => {
+      const neighbors = document.createElement("p");
+      neighbors.textContent = neighbor;
+      neighbors.style.marginRight = "0.5rem";
+      textContainer.appendChild(neighbors);
+    });
+  }
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      document.body.removeChild(modal);
+    }
+  });
+};
