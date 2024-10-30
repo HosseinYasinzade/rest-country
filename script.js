@@ -118,8 +118,6 @@ const data = async function () {
   try {
     const info = await fetch(" https://restcountries.com/v3.1/all ");
     const countries = await info.json();
-    console.log(countries);
-
     return countries;
   } catch (error) {
     alert(error.message);
@@ -195,10 +193,20 @@ filter.addEventListener("change", function (e) {
 // search
 search.addEventListener("keyup", function (e) {
   const allCards = document.querySelectorAll(".cart");
+  const selectRegion = filter.value.toLowerCase();
+
   allCards.forEach((cart) => {
-    cart.style.display = "none";
-    if (cart.dataset.name.toLowerCase().includes(e.target.value)) {
+    const userSearch = cart.dataset.name
+      .toLowerCase()
+      .includes(e.target.value.toLowerCase());
+    const matchesRegion =
+      selectRegion === "all" ||
+      cart.dataset.region.toLowerCase() === selectRegion;
+
+    if (userSearch && matchesRegion) {
       cart.style.display = "block";
+    } else {
+      cart.style.display = "none";
     }
   });
 });
