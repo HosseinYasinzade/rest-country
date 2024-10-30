@@ -141,6 +141,10 @@ data().then((countries) => {
     cart.setAttribute("data-name", country.name.common);
     cart.setAttribute("data-region", country.region);
     cart.setAttribute("data-neighbors", country.borders);
+    const nativeName = country.name.nativeName
+      ? Object.values(country.name.nativeName)[0].official
+      : "N/A";
+    cart.setAttribute("data-native-name", nativeName);
     cartImg.src = `https://flagcdn.com/${country.cca2.toLowerCase()}.svg`;
     cartBottom.id = "cartBottom";
     cartTitle.textContent = country.name.common;
@@ -296,6 +300,8 @@ const openModal = (country) => {
   title.textContent = countryName;
   title.style.margin = "2rem 0";
   title.style.fontSize = "3rem";
+  const nativeName = country.getAttribute("data-native-name");
+  nativeText.textContent = `native name : ${nativeName}`;
   populationText.textContent = population;
   populationText.style.margin = "1rem 0";
   populationText.style.fontSize = "1.7rem";
@@ -309,6 +315,7 @@ const openModal = (country) => {
   modalContent.appendChild(flagImage);
   modalContent.appendChild(textContainer);
   textContainer.appendChild(title);
+  textContainer.appendChild(nativeText);
   textContainer.appendChild(populationText);
   textContainer.appendChild(regionText);
   textContainer.appendChild(capitalText);
