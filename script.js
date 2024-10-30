@@ -118,6 +118,8 @@ const data = async function () {
   try {
     const info = await fetch(" https://restcountries.com/v3.1/all ");
     const countries = await info.json();
+    console.log(countries);
+
     return countries;
   } catch (error) {
     alert(error.message);
@@ -278,6 +280,7 @@ const openModal = (country) => {
   const flagImage = document.createElement("img");
   const textContainer = document.createElement("div");
   const title = document.createElement("h2");
+  const nativeText = document.createElement("p");
   const populationText = document.createElement("p");
   const regionText = document.createElement("p");
   const capitalText = document.createElement("p");
@@ -291,9 +294,17 @@ const openModal = (country) => {
   textContainer.style.flexDirection = "column";
   textContainer.style.marginLeft = "2rem";
   title.textContent = countryName;
-  populationText.textContent = `Population: ${population}`;
-  regionText.textContent = `Region: ${region}`;
-  capitalText.textContent = `Capital: ${capital}`;
+  title.style.margin = "2rem 0";
+  title.style.fontSize = "3rem";
+  populationText.textContent = population;
+  populationText.style.margin = "1rem 0";
+  populationText.style.fontSize = "1.7rem";
+  regionText.textContent = region;
+  regionText.style.margin = "1rem 0";
+  regionText.style.fontSize = "1.7rem";
+  capitalText.textContent = capital;
+  capitalText.style.margin = "1rem 0";
+  capitalText.style.fontSize = "1.7rem";
 
   modalContent.appendChild(flagImage);
   modalContent.appendChild(textContainer);
@@ -303,15 +314,28 @@ const openModal = (country) => {
   textContainer.appendChild(capitalText);
 
   if (neighbors.length > 0) {
+    const neighborsWrapper = document.createElement("div");
+    neighborsWrapper.style.display = "flex";
+    neighborsWrapper.style.alignItems = "center";
+
     neighborsTitle.textContent = "Border Countries:";
-    textContainer.appendChild(neighborsTitle);
+    neighborsTitle.style.margin = "1rem";
+    neighborsTitle.style.fontSize = "1.7rem";
+    neighborsWrapper.appendChild(neighborsTitle);
 
     neighbors.forEach((neighbor) => {
-      const neighbors = document.createElement("p");
-      neighbors.textContent = neighbor;
-      neighbors.style.marginRight = "0.5rem";
-      textContainer.appendChild(neighbors);
+      const neighborContainer = document.createElement("div");
+      const neighborText = document.createElement("p");
+
+      neighborText.textContent = neighbor;
+      neighborText.style.margin = "0 0.5rem";
+      neighborContainer.appendChild(neighborText);
+      neighborsWrapper.appendChild(neighborContainer);
     });
+
+    textContainer.appendChild(neighborsWrapper);
+
+    textContainer.appendChild(neighborsWrapper);
   }
 
   modal.addEventListener("click", (e) => {
