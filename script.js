@@ -229,26 +229,33 @@ const openModal = (country) => {
 
   modalContent.style.position = "relative";
   modalContent.style.display = "flex";
-  modalContent.style.padding = "2rem";
+  modalContent.style.padding = "5rem";
   modalContent.style.backgroundColor = "#fff";
-
-  if (!modeFlag) {
-    modal.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-    modalContent.style.backgroundColor = "hsl(209, 23%, 22%)";
-    modalContent.style.color = "#fff";
-  } else {
-    modal.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
-    modalContent.style.backgroundColor = "#fff";
-    modalContent.style.color = "#000";
-  }
 
   closeButton.textContent = "Back";
   closeButton.style.position = "absolute";
-  closeButton.style.top = "0.5rem";
-  closeButton.style.left = "1rem";
+  closeButton.style.top = "1rem";
+  closeButton.style.left = "2rem";
   closeButton.style.width = "10rem";
-  closeButton.style.height = "2rem";
+  closeButton.style.height = "2.5rem";
+  closeButton.style.backgroundColor = "#fff";
+  closeButton.style.boxShadow = "2px 2px 11px 2px rgba(184,184,184,1)";
+  closeButton.style.border = "none";
   closeButton.style.cursor = "pointer";
+
+  if (!modeFlag) {
+    modal.style.backgroundColor = "hsl(209, 23%, 22%)";
+    modalContent.style.backgroundColor = "hsl(209, 23%, 22%)";
+    modalContent.style.color = "#fff";
+    closeButton.style.backgroundColor = "hsl(209, 26%, 23%)";
+    closeButton.style.color = "#fff";
+  } else {
+    modal.style.backgroundColor = "rgb(255, 255, 255)";
+    modalContent.style.backgroundColor = "#fff";
+    modalContent.style.color = "#000";
+    closeButton.style.backgroundColor = "#fff";
+    closeButton.style.color = "#000";
+  }
 
   closeButton.addEventListener("click", () => {
     modal.style.display = "none";
@@ -353,7 +360,6 @@ mod.addEventListener("click", function () {
       cart.style.backgroundColor = "#fff";
       cart.style.color = "black";
     });
-
     modeFlag = true;
   }
 });
