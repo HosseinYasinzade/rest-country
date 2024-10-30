@@ -293,7 +293,7 @@ const openModal = (country) => {
   const neighborsTitle = document.createElement("p");
 
   flagImage.src = flagSrc;
-  flagImage.style.maxWidth = "80%";
+  flagImage.style.maxWidth = "50rem";
   flagImage.style.height = "40rem";
   flagImage.style.marginBottom = "1rem";
   textContainer.style.display = "flex";
