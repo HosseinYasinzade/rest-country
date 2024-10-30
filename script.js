@@ -144,6 +144,8 @@ data().then((countries) => {
     const nativeName = country.name.nativeName
       ? Object.values(country.name.nativeName)[0].official
       : "N/A";
+    cart.setAttribute("data-subregion", country.subregion || "N/A");
+
     cart.setAttribute("data-native-name", nativeName);
     cartImg.src = `https://flagcdn.com/${country.cca2.toLowerCase()}.svg`;
     cartBottom.id = "cartBottom";
@@ -298,16 +300,23 @@ const openModal = (country) => {
   textContainer.style.flexDirection = "column";
   textContainer.style.marginLeft = "2rem";
   title.textContent = countryName;
-  title.style.margin = "2rem 0";
+  title.style.margin = "1rem 0";
   title.style.fontSize = "3rem";
   const nativeName = country.getAttribute("data-native-name");
   nativeText.textContent = `native name : ${nativeName}`;
+  nativeText.style.margin = "1rem 0";
+  nativeText.style.fontSize = "1.7rem";
   populationText.textContent = population;
   populationText.style.margin = "1rem 0";
   populationText.style.fontSize = "1.7rem";
   regionText.textContent = region;
   regionText.style.margin = "1rem 0";
   regionText.style.fontSize = "1.7rem";
+  const subregion = country.getAttribute("data-subregion");
+  const subregionText = document.createElement("p");
+  subregionText.textContent = `subregion: ${subregion}`;
+  subregionText.style.margin = "1rem 0";
+  subregionText.style.fontSize = "1.7rem";
   capitalText.textContent = capital;
   capitalText.style.margin = "1rem 0";
   capitalText.style.fontSize = "1.7rem";
@@ -318,6 +327,7 @@ const openModal = (country) => {
   textContainer.appendChild(nativeText);
   textContainer.appendChild(populationText);
   textContainer.appendChild(regionText);
+  textContainer.appendChild(subregionText);
   textContainer.appendChild(capitalText);
 
   if (neighbors.length > 0) {
