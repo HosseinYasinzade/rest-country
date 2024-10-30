@@ -116,8 +116,10 @@ editContainer.insertAdjacentElement("afterend", container);
 // fetch
 const data = async function () {
   try {
-    const info = await fetch("./data.json");
+    const info = await fetch(" https://restcountries.com/v3.1/all ");
     const countries = await info.json();
+    console.log(countries);
+
     return countries;
   } catch (error) {
     alert(error.message);
@@ -136,12 +138,12 @@ data().then((countries) => {
     const capital = document.createElement("p");
 
     cart.classList.add("cart");
-    cart.setAttribute("data-name", country.name);
+    cart.setAttribute("data-name", country.name.common);
     cart.setAttribute("data-region", country.region);
     cart.setAttribute("data-neighbors", country.borders);
-    cartImg.src = `https://flagcdn.com/${country.alpha2Code.toLowerCase()}.svg`;
+    cartImg.src = `https://flagcdn.com/${country.cca2.toLowerCase()}.svg`;
     cartBottom.id = "cartBottom";
-    cartTitle.textContent = country.name;
+    cartTitle.textContent = country.name.common;
     population.classList.add("population");
     population.textContent = `Population: ${country.population}`;
     region.textContent = `Region: ${country.region}`;
@@ -179,17 +181,6 @@ data().then((countries) => {
   });
 });
 
-// search
-search.addEventListener("keyup", function (e) {
-  const allCards = document.querySelectorAll(".cart");
-  allCards.forEach((cart) => {
-    cart.style.display = "none";
-    if (cart.dataset.name.toLowerCase().includes(e.target.value)) {
-      cart.style.display = "block";
-    }
-  });
-});
-
 // filter
 filter.addEventListener("change", function (e) {
   const CartsItem = document.querySelectorAll(".cart");
@@ -197,6 +188,17 @@ filter.addEventListener("change", function (e) {
     item.style.display = "none";
     if (item.dataset.region === e.target.value || e.target.value === "all") {
       item.style.display = "block";
+    }
+  });
+});
+
+// search
+search.addEventListener("keyup", function (e) {
+  const allCards = document.querySelectorAll(".cart");
+  allCards.forEach((cart) => {
+    cart.style.display = "none";
+    if (cart.dataset.name.toLowerCase().includes(e.target.value)) {
+      cart.style.display = "block";
     }
   });
 });
