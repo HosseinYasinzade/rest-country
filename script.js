@@ -237,13 +237,13 @@ const openModal = (country) => {
 
   modalContent.style.position = "relative";
   modalContent.style.display = "flex";
-  modalContent.style.padding = "5rem";
+  modalContent.style.padding = "8rem";
   modalContent.style.backgroundColor = "#fff";
 
   closeButton.textContent = "Back";
   closeButton.style.position = "absolute";
   closeButton.style.top = "1rem";
-  closeButton.style.left = "2rem";
+  closeButton.style.left = "10rem";
   closeButton.style.width = "10rem";
   closeButton.style.height = "2.5rem";
   closeButton.style.backgroundColor = "#fff";
@@ -257,6 +257,7 @@ const openModal = (country) => {
     modalContent.style.color = "#fff";
     closeButton.style.backgroundColor = "hsl(209, 26%, 23%)";
     closeButton.style.color = "#fff";
+    closeButton.style.boxShadow = "2px 2px 5px 2px rgb(0,0,0)";
   } else {
     modal.style.backgroundColor = "rgb(255, 255, 255)";
     modalContent.style.backgroundColor = "#fff";
