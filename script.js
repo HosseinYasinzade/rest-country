@@ -145,7 +145,7 @@ data().then((countries) => {
       ? Object.values(country.name.nativeName)[0].official
       : "N/A";
     cart.setAttribute("data-subregion", country.subregion || "N/A");
-
+    cart.setAttribute("data-tld", country.tld ? country.tld[0] : "N/A");
     cart.setAttribute("data-native-name", nativeName);
     cartImg.src = `https://flagcdn.com/${country.cca2.toLowerCase()}.svg`;
     cartBottom.id = "cartBottom";
@@ -273,12 +273,15 @@ const openModal = (country) => {
   const flagImage = document.createElement("img");
   const textContainer = document.createElement("div");
   const txtContainer2 = document.createElement("div");
+
   const title = document.createElement("h2");
   const nativeText = document.createElement("p");
   const populationText = document.createElement("p");
   const regionText = document.createElement("p");
   const capitalText = document.createElement("p");
   const neighborsTitle = document.createElement("p");
+
+  const tldText = document.createElement("p");
 
   flagImage.src = flagSrc;
   flagImage.style.maxWidth = "50rem";
@@ -290,6 +293,7 @@ const openModal = (country) => {
   txtContainer2.style.display = "flex";
   txtContainer2.style.flexDirection = "column";
   txtContainer2.style.marginLeft = "2rem";
+  txtContainer2.style.marginTop = "5.5rem";
   title.textContent = countryName;
   title.style.margin = "1rem 0";
   title.style.fontSize = "3rem";
@@ -312,15 +316,23 @@ const openModal = (country) => {
   capitalText.style.margin = "1rem 0";
   capitalText.style.fontSize = "1.7rem";
 
+  const tld = country.getAttribute("data-tld");
+  tldText.textContent = `Top Level Domain: ${tld}`;
+  tldText.style.margin = "1rem 0";
+  tldText.style.fontSize = "1.7rem";
+
   modalContent.appendChild(flagImage);
   modalContent.appendChild(textContainer);
   modalContent.appendChild(txtContainer2);
+
   textContainer.appendChild(title);
   textContainer.appendChild(nativeText);
   textContainer.appendChild(populationText);
   textContainer.appendChild(regionText);
   textContainer.appendChild(subregionText);
   textContainer.appendChild(capitalText);
+
+  txtContainer2.appendChild(tldText);
 
   if (neighbors.length > 0) {
     const neighborsWrapper = document.createElement("div");
