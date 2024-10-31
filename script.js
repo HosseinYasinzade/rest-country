@@ -143,10 +143,14 @@ data().then((countries) => {
     cart.setAttribute("data-neighbors", country.borders);
     const nativeName = country.name.nativeName
       ? Object.values(country.name.nativeName)[0].official
-      : "N/A";
-    cart.setAttribute("data-subregion", country.subregion || "N/A");
-    cart.setAttribute("data-tld", country.tld ? country.tld[0] : "N/A");
+      : "not found";
+    cart.setAttribute("data-subregion", country.subregion || "not found");
+    cart.setAttribute("data-tld", country.tld ? country.tld[0] : "not found");
     cart.setAttribute("data-native-name", nativeName);
+    const currencyName = country.currencies
+      ? Object.values(country.currencies)[0].name
+      : "not found";
+    cart.setAttribute("data-currency", currencyName);
     cartImg.src = `https://flagcdn.com/${country.cca2.toLowerCase()}.svg`;
     cartBottom.id = "cartBottom";
     cartTitle.textContent = country.name.common;
@@ -282,6 +286,7 @@ const openModal = (country) => {
   const neighborsTitle = document.createElement("p");
 
   const tldText = document.createElement("p");
+  const corText = document.createElement("p");
 
   flagImage.src = flagSrc;
   flagImage.style.maxWidth = "50rem";
@@ -320,6 +325,10 @@ const openModal = (country) => {
   tldText.textContent = `Top Level Domain: ${tld}`;
   tldText.style.margin = "1rem 0";
   tldText.style.fontSize = "1.7rem";
+  const cor = country.getAttribute("data-currency");
+  corText.textContent = `Currencies: ${cor}`;
+  corText.style.margin = "1rem 0";
+  corText.style.fontSize = "1.7rem";
 
   modalContent.appendChild(flagImage);
   modalContent.appendChild(textContainer);
@@ -333,6 +342,7 @@ const openModal = (country) => {
   textContainer.appendChild(capitalText);
 
   txtContainer2.appendChild(tldText);
+  txtContainer2.appendChild(corText);
 
   if (neighbors.length > 0) {
     const neighborsWrapper = document.createElement("div");
