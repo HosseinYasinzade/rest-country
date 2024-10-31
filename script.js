@@ -237,6 +237,7 @@ const openModal = (country) => {
 
   modalContent.style.position = "relative";
   modalContent.style.display = "flex";
+  modalContent.style.justifyContent = "space-between";
   modalContent.style.padding = "10rem";
   modalContent.style.backgroundColor = "#fff";
 
@@ -271,6 +272,7 @@ const openModal = (country) => {
 
   const flagImage = document.createElement("img");
   const textContainer = document.createElement("div");
+  const txtContainer2 = document.createElement("div");
   const title = document.createElement("h2");
   const nativeText = document.createElement("p");
   const populationText = document.createElement("p");
@@ -283,9 +285,11 @@ const openModal = (country) => {
   flagImage.style.height = "40rem";
   flagImage.style.marginBottom = "1rem";
   textContainer.style.display = "flex";
-  textContainer.style.width = "60%";
   textContainer.style.flexDirection = "column";
   textContainer.style.marginLeft = "2rem";
+  txtContainer2.style.display = "flex";
+  txtContainer2.style.flexDirection = "column";
+  txtContainer2.style.marginLeft = "2rem";
   title.textContent = countryName;
   title.style.margin = "1rem 0";
   title.style.fontSize = "3rem";
@@ -310,6 +314,7 @@ const openModal = (country) => {
 
   modalContent.appendChild(flagImage);
   modalContent.appendChild(textContainer);
+  modalContent.appendChild(txtContainer2);
   textContainer.appendChild(title);
   textContainer.appendChild(nativeText);
   textContainer.appendChild(populationText);
