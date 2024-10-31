@@ -6,6 +6,11 @@ const flexing = (element) => {
   element.style.justifyContent = "space-between";
   element.style.alignItems = "center";
 };
+
+const textStyle = (txt) => {
+  txt.style.margin = "1rem 0";
+  txt.style.fontSize = "1.7rem";
+};
 // create element
 const header = document.createElement("header");
 const nav = document.createElement("nav");
@@ -304,31 +309,24 @@ const openModal = (country) => {
   title.style.fontSize = "3rem";
   const nativeName = country.getAttribute("data-native-name");
   nativeText.textContent = `native name : ${nativeName}`;
-  nativeText.style.margin = "1rem 0";
-  nativeText.style.fontSize = "1.7rem";
+  textStyle(nativeText);
   populationText.textContent = population;
-  populationText.style.margin = "1rem 0";
-  populationText.style.fontSize = "1.7rem";
+  textStyle(populationText);
   regionText.textContent = region;
-  regionText.style.margin = "1rem 0";
-  regionText.style.fontSize = "1.7rem";
+  textStyle(regionText);
   const subregion = country.getAttribute("data-subregion");
   const subregionText = document.createElement("p");
   subregionText.textContent = `subregion: ${subregion}`;
-  subregionText.style.margin = "1rem 0";
-  subregionText.style.fontSize = "1.7rem";
+  textStyle(subregionText);
   capitalText.textContent = capital;
-  capitalText.style.margin = "1rem 0";
-  capitalText.style.fontSize = "1.7rem";
+  textStyle(capitalText);
 
   const tld = country.getAttribute("data-tld");
   tldText.textContent = `Top Level Domain: ${tld}`;
-  tldText.style.margin = "1rem 0";
-  tldText.style.fontSize = "1.7rem";
+  textStyle(tldText);
   const cor = country.getAttribute("data-currency");
   corText.textContent = `Currencies: ${cor}`;
-  corText.style.margin = "1rem 0";
-  corText.style.fontSize = "1.7rem";
+  textStyle(corText);
 
   modalContent.appendChild(flagImage);
   modalContent.appendChild(textContainer);
@@ -390,7 +388,6 @@ const openModal = (country) => {
     });
     textContainer.appendChild(neighborsWrapper);
   }
-
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
       document.body.removeChild(modal);
