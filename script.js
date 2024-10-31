@@ -327,6 +327,12 @@ const openModal = (country) => {
     neighborsTitle.style.fontSize = "1.7rem";
     neighborsWrapper.appendChild(neighborsTitle);
 
+    let neighborsData = country.getAttribute("data-neighbors");
+    let neighbors =
+      neighborsData && neighborsData !== "undefined"
+        ? neighborsData.split(",")
+        : ["not border"];
+
     neighbors.forEach((neighbor) => {
       const neighborContainer = document.createElement("div");
       const neighborText = document.createElement("p");
@@ -355,8 +361,6 @@ const openModal = (country) => {
         closeButton.style.color = "#000";
       }
     });
-    textContainer.appendChild(neighborsWrapper);
-
     textContainer.appendChild(neighborsWrapper);
   }
 
