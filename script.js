@@ -157,6 +157,11 @@ data().then((countries) => {
       : "not found";
     cart.setAttribute("data-currency", currencyName);
     cartImg.src = `https://flagcdn.com/${country.cca2.toLowerCase()}.svg`;
+    const countryLanguages = country.languages
+      ? Object.values(country.languages).join(", ")
+      : "not found";
+    cart.setAttribute("data-langs", countryLanguages);
+
     cartBottom.id = "cartBottom";
     cartTitle.textContent = country.name.common;
     population.classList.add("population");
@@ -292,6 +297,7 @@ const openModal = (country) => {
 
   const tldText = document.createElement("p");
   const corText = document.createElement("p");
+  const languagesText = document.createElement("p");
 
   flagImage.src = flagSrc;
   flagImage.style.maxWidth = "50rem";
@@ -327,6 +333,11 @@ const openModal = (country) => {
   const cor = country.getAttribute("data-currency");
   corText.textContent = `Currencies: ${cor}`;
   textStyle(corText);
+  const countryLanguages =
+    country.getAttribute("data-langs") || "No languages found";
+  languagesText.textContent = `Languages: ${countryLanguages}`;
+  languagesText.style.margin = "1rem 0";
+  languagesText.style.fontSize = "1.7rem";
 
   modalContent.appendChild(flagImage);
   modalContent.appendChild(textContainer);
@@ -341,6 +352,7 @@ const openModal = (country) => {
 
   txtContainer2.appendChild(tldText);
   txtContainer2.appendChild(corText);
+  txtContainer2.appendChild(languagesText);
 
   if (neighbors.length > 0) {
     const neighborsWrapper = document.createElement("div");
