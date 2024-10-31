@@ -237,7 +237,7 @@ const openModal = (country) => {
 
   modalContent.style.position = "relative";
   modalContent.style.display = "flex";
-  modalContent.style.padding = "8rem";
+  modalContent.style.padding = "10rem";
   modalContent.style.backgroundColor = "#fff";
 
   closeButton.textContent = "Back";
@@ -250,21 +250,6 @@ const openModal = (country) => {
   closeButton.style.boxShadow = "2px 2px 11px 2px rgba(184,184,184,1)";
   closeButton.style.border = "none";
   closeButton.style.cursor = "pointer";
-
-  if (!modeFlag) {
-    modal.style.backgroundColor = "hsl(209, 23%, 22%)";
-    modalContent.style.backgroundColor = "hsl(209, 23%, 22%)";
-    modalContent.style.color = "#fff";
-    closeButton.style.backgroundColor = "hsl(209, 26%, 23%)";
-    closeButton.style.color = "#fff";
-    closeButton.style.boxShadow = "2px 2px 5px 2px rgb(0,0,0)";
-  } else {
-    modal.style.backgroundColor = "rgb(255, 255, 255)";
-    modalContent.style.backgroundColor = "#fff";
-    modalContent.style.color = "#000";
-    closeButton.style.backgroundColor = "#fff";
-    closeButton.style.color = "#000";
-  }
 
   closeButton.addEventListener("click", () => {
     modal.style.display = "none";
@@ -348,10 +333,28 @@ const openModal = (country) => {
 
       neighborText.textContent = neighbor;
       neighborText.style.margin = "0 0.5rem";
+      neighborText.style.padding = "0.5rem";
+      neighborText.style.border = "1px solid #BDBDBD";
       neighborContainer.appendChild(neighborText);
       neighborsWrapper.appendChild(neighborContainer);
-    });
 
+      if (!modeFlag) {
+        modal.style.backgroundColor = "hsl(207, 26%, 17%)";
+        modalContent.style.backgroundColor = "hsl(207, 26%, 17%)";
+        modalContent.style.color = "#fff";
+        closeButton.style.backgroundColor = "hsl(209, 26%, 23%)";
+        closeButton.style.color = "#fff";
+        closeButton.style.boxShadow = "2px 2px 5px 2px rgb(0,0,0)";
+        neighborText.style.border = "none";
+        neighborText.style.backgroundColor = "hsl(209, 26%, 23%)";
+      } else {
+        modal.style.backgroundColor = "rgb(255, 255, 255)";
+        modalContent.style.backgroundColor = "#fff";
+        modalContent.style.color = "#000";
+        closeButton.style.backgroundColor = "#fff";
+        closeButton.style.color = "#000";
+      }
+    });
     textContainer.appendChild(neighborsWrapper);
 
     textContainer.appendChild(neighborsWrapper);
