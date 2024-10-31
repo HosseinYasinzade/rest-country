@@ -360,7 +360,7 @@ const openModal = (country) => {
     neighborsWrapper.style.alignItems = "center";
 
     neighborsTitle.textContent = "Border Countries:";
-    neighborsTitle.style.margin = "1rem";
+    neighborsTitle.style.margin = "5rem 0";
     neighborsTitle.style.fontSize = "1.7rem";
     neighborsWrapper.appendChild(neighborsTitle);
 
