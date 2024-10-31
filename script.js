@@ -9,7 +9,7 @@ const flexing = (element) => {
 
 const textStyle = (txt) => {
   txt.style.margin = "1rem 0";
-  txt.style.fontSize = "1.7rem";
+  txt.classList.add("txt");
 };
 // create element
 const header = document.createElement("header");
@@ -248,12 +248,14 @@ const openModal = (country) => {
   modal.style.justifyContent = "center";
   modal.style.alignItems = "center";
   modal.style.fontSize = "1.5rem";
+  modal.classList.add("modal");
 
   modalContent.style.position = "relative";
   modalContent.style.display = "flex";
   modalContent.style.justifyContent = "space-between";
   modalContent.style.padding = "10rem";
   modalContent.style.backgroundColor = "#fff";
+  modalContent.classList.add("modal");
 
   closeButton.textContent = "Back";
   closeButton.style.position = "absolute";
@@ -300,9 +302,8 @@ const openModal = (country) => {
   const languagesText = document.createElement("p");
 
   flagImage.src = flagSrc;
-  flagImage.style.maxWidth = "50rem";
-  flagImage.style.height = "40rem";
   flagImage.style.marginBottom = "1rem";
+  flagImage.classList.add("img");
   textContainer.style.display = "flex";
   textContainer.style.flexDirection = "column";
   textContainer.style.marginLeft = "2rem";

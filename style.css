@@ -21,6 +21,10 @@ html {
   border: 1px solid black;
   background-color: #eeeeee;
 }
+.img {
+  max-width: 50rem;
+  height: 40rem;
+}
 
 @media screen and (max-width: 1466px) {
   .cart {
@@ -33,12 +37,30 @@ html {
     width: 40%;
     margin: 5rem 3.8rem;
   }
+  .txt {
+    font-size: 1.4rem;
+  }
+  .img {
+    max-width: 30rem;
+    height: 30rem;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .modal {
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 875px) {
   .cart {
     width: 75%;
     margin: 5rem 10rem;
+  }
+  .modal {
+    flex-direction: column;
+  }
+  .txt {
+    font-size: 2rem;
   }
 }
 
